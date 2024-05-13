@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./img/favicon.ico" type="image/x-icon">
+    <title>Admin Page</title>
+    <link href="./css/main.css" rel="stylesheet">
+    <link href="./fontawesome/css/all.min.css" rel="stylesheet">
+</head>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<body>
+    <div class="container">
+        <nav class="side-navbar">
+            <div class="side-options">
+                <div class="icon-box">
+                    <i class="fa-solid fa-house-chimney"></i>
+                </div>
+                <div class="icon-text">Home</div>
+            </div>
+            <div class="side-options">
+                <div class="icon-box">
+                    <i class="fa-solid fa-headphones"></i>
+                </div>
+                <div class="icon-text">Services</div>
+            </div>
+            <div class="side-options">
+                <div class="icon-box">
+                    <i class="fa-solid fa-flag"></i>
+                </div>
+                <div class="icon-text">Alerts</div>
+            </div>
+            <div class="side-options">
+                <div class="icon-box">
+                    <i class="fa-solid fa-chart-pie"></i>
+                </div>
+                <div class="icon-text">Stats</div>
+            </div>
+        </nav>
+
+        <div class="content-header">
+            <div class="menu-bar">
+                <div class="input-group">
+                    <input type="text" placeholder="Search">
+                    <button type="button">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
+                <div class="right-menu">
+                    <div class="header-icon-box">
+                        <i class="fa-solid fa-bell"></i>
+                        <div>5</div>
+                    </div>
+                    <div class="header-icon-box">
+                        <i class="fa-solid fa-envelope"></i>
+                        <div>9</div>
+                    </div>
+                    <p>Justin Kim</p>
+                </div>
+            </div>
+            <div class="menu-sm-bar">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+        <div class="content-box">
+            <h2 class="dashboard-text">Dashboard</h2>
+            <div class="row dashboard-box">
+                <div class="col-12 col-sm-6 col-lg-3 lg-margin">
+                    <div class="e-blue">
+                        <div>
+                            <p>Earnings (Annual)</p>
+                            <h2>$800,000</h2>
+                        </div>
+                        <div>
+                            <i class="fa-solid fa-calendar fa-2xl"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-3 lg-margin">
+                    <div class="e-green">
+                        <div>
+                            <p>Earnings (Monthly)</p>
+                            <h2>$400,000</h2>
+                        </div>
+                        <div>
+                            <i class="fa-solid fa-dollar-sign fa-2xl"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-3 lg-margin">
+                    <div class="e-purple">
+                        <div>
+                            <p>Tasks</p>
+                            <h2>13</h2>
+                        </div>
+                        <div>
+                            <i class="fa-solid fa-list-check fa-2xl"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="e-yellow">
+                        <div>
+                            <p>Requests</p>
+                            <h2>26</h2>
+                        </div>
+                        <div>
+                            <i class="fa-solid fa-comments fa-2xl"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row dashboard-box">
+                <div class="col-12 col-sm-12 col-lg-8 chart-box chart-margin">
+                    <div class="chart-text">
+                        <h4>Earnings Overview</h4>
+                    </div>
+                    <div class="chart-diagram">
+                        <canvas id="myChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-12 col-lg-4 tasks-box">
+                    <div class="tasks-text">
+                        <h4>Tasks</h4>
+                    </div>
+                    <div class="tasks-list">
+                        <div class="tasks-components">
+                            <p>Borrowed Items</p>
+                            <div class="tasks-counts">14</div>
+                        </div>
+                        <div class="tasks-components">
+                            <p>Trello requests</p>
+                            <div class="tasks-counts">2</div>
+                        </div>
+                        <div class="tasks-components">
+                            <p>Marked Comments</p>
+                            <div class="tasks-counts">1</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+                datasets: [{
+                    label: 'Monthly',
+                    data: [0, 10, 5, 2.5, 20, 30, 45],
+                    fill: true,
+                    backgroundColor: '#484BB3',
+                    borderColor: 'gray',
+                    borderWidth: 1,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

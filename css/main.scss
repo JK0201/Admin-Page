@@ -1,0 +1,338 @@
+@use "./reset";
+
+$div-shadow: 0px 0px 4px 1px lightgray;
+$div-padding: 1.2rem 2rem;
+
+@mixin content-padding ($padding-y) {
+    padding: $padding-y 1rem $padding-y 5rem;
+}
+
+@mixin dashboard-elements($c-border) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 1.5rem 2rem;
+    border-left: 5px solid $c-border;
+    border-radius: 5px;
+    background-color: white;
+    margin: 1rem 0;
+    box-shadow: $div-shadow;
+
+    p {
+        color: rgb(100, 100, 100);
+        margin-top: 0.5rem;
+    }
+
+    h2 {
+        margin: 0.5rem 0;
+    }
+
+    i {
+        color: rgb(100, 100, 100);
+    }
+}
+
+@mixin content-div() {
+    padding: $div-padding;
+    box-shadow: $div-shadow;
+    border-radius: 4px;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+}
+
+.side-navbar {
+    position: fixed;
+    width: 4rem;
+    height: 100%;
+    background: linear-gradient(to bottom, #484BB3, #6265b8);
+    border-right: 1px solid gr;
+    transition: all 0.5s;
+}
+
+@keyframes ani-text {
+    0% {
+        transform: translateX(-15rem);
+    }
+
+    100% {
+        transform: translate(0.5rem);
+    }
+}
+
+.side-options {
+    display: flex;
+    padding: 1rem;
+    margin: 1.2rem 0;
+    color: white;
+    cursor: pointer;
+
+    .icon-box {
+        text-align: center;
+        width: 30%;
+    }
+
+    .icon-text {
+        transform: translateX(-15rem);
+    }
+}
+
+.side-navbar:hover {
+    width: 14rem;
+
+    .icon-text {
+        animation-name: ani-text;
+        animation-duration: 0.5s;
+        animation-fill-mode: forwards;
+    }
+}
+
+.content-box {
+    margin: 0 auto;
+    max-width: 1400px;
+}
+
+.content-header {
+    @include content-padding(1rem);
+    width: 100%;
+    height: 7rem;
+    background-color: white;
+    box-shadow: $div-shadow;
+
+    .header-box {
+        @include content-div();
+    }
+
+    &::after {
+        content: "";
+        display: block;
+        clear: both;
+        float: none;
+    }
+}
+
+.menu-bar {
+    display: none;
+    width: 100%;
+    max-width: 1340px;
+    margin: 0 auto;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.input-group {
+    display: flex;
+    padding: 0.4rem 0;
+    height: 5rem;
+
+    input[type=text] {
+        padding: 0 1.2rem;
+        width: 10rem;
+        border: 1px solid rgb(200, 200, 200);
+        border-radius: 5px 0px 0px 5px;
+        transition: border 0.1s, width 1s;
+    }
+
+    input[type=text]:focus {
+        outline: none;
+        border: 2px solid #abaeff;
+        width: 20rem;
+    }
+
+    button {
+        text-align: center;
+        width: 5rem;
+        height: 100%;
+        font-size: 1.6rem;
+        border: 1px solid #343A40;
+        border-radius: 0px 5px 5px 0px;
+        color: white;
+        background-color: #343A40;
+    }
+}
+
+.right-menu {
+    display: flex;
+    align-items: center;
+
+    p,
+    .header-icon-box {
+        color: rgb(200, 200, 200);
+        font-size: 2rem;
+        cursor: pointer;
+    }
+
+    .header-icon-box {
+        position: relative;
+        margin-right: 3rem;
+    }
+
+    .header-icon-box>div {
+        position: absolute;
+        font-size: 1.2rem;
+        font-weight: bold;
+        width: 1.8rem;
+        height: 1.8rem;
+        line-height: 1.6rem;
+        border-radius: 5px;
+        text-align: center;
+        color: white;
+        background-color: red;
+        right: -50%;
+        top: -30%;
+    }
+}
+
+.menu-sm-bar {
+    padding: 0.4rem 1.6rem;
+    margin: 0.4rem 0;
+    font-size: 2.4rem;
+    color: rgb(200, 200, 200);
+    border: 1px solid rgb(200, 200, 200);
+    border-radius: 5px;
+    float: right;
+    cursor: pointer;
+}
+
+.dashboard-text {
+    @include content-padding(0);
+    margin: 2rem 0;
+}
+
+.dashboard-box {
+    @include content-padding(0);
+}
+
+.e-blue {
+    @include dashboard-elements(#AAD9ED);
+}
+
+.e-green {
+    @include dashboard-elements(#3FC95A);
+}
+
+.e-purple {
+    @include dashboard-elements(#494CB4);
+}
+
+.e-yellow {
+    @include dashboard-elements(#FFCB55);
+}
+
+.chart-box,
+.tasks-box {
+    margin: 4rem 0;
+}
+
+.chart-text,
+.tasks-text {
+    @include content-div();
+}
+
+.chart-diagram {
+    @include content-div();
+    height: 100%;
+    background-color: white;
+
+}
+
+.tasks-list {
+    background-color: white;
+    box-shadow: $div-shadow;
+
+    .tasks-components {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: $div-padding;
+        border: 1px solid #eee;
+    }
+
+    p {
+        color: rgb(100, 100, 100);
+    }
+
+    .tasks-counts {
+        text-align: center;
+        padding: 0.2rem 1rem;
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: white;
+        background-color: #027EFF;
+        border-radius: 15px;
+    }
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+@media screen and (max-width:576px) {
+    .menu-bar {
+        display: none;
+    }
+}
+
+@media screen and (min-width:576px) {
+    .menu-bar {
+        display: flex;
+    }
+
+    .menu-sm-bar {
+        display: none;
+    }
+}
+
+@media screen and (min-width:992px) {
+    .lg-margin {
+        margin-right: 2%;
+    }
+
+    .chart-margin {
+        margin-right: 3%;
+    }
+}
+
+@for $i from 1 through 12 {
+    .col-#{ $i } {
+        @media screen and (max-width:576px) {
+            width: 100% / (12 / $i);
+        }
+    }
+
+    .col-sm-#{ $i } {
+        @media screen and (min-width:576px) and (max-width: 991px) {
+            width: 94% / (12 / $i);
+            margin-right: 3%;
+        }
+    }
+
+    .col-sm-12 {
+        @media screen and (min-width:576px) and (max-width: 991px) {
+            width: 100%;
+            margin-right: 3%;
+        }
+    }
+
+    .col-lg-#{ $i } {
+        @media screen and (min-width:992px) {
+            width: 94% / (12 / $i);
+        }
+    }
+
+    .col-lg-4 {
+        @media screen and (min-width:992px) {
+            width: 97% / (12 / 4);
+        }
+    }
+
+    .col-lg-8 {
+        @media screen and (min-width:992px) {
+            width: 97% / (12 / 8);
+        }
+    }
+}
